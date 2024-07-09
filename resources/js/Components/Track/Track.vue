@@ -1,21 +1,29 @@
 <template>
     <div class="max-w-sm rounded overflow-hidden shadow-lg cursos-pointer">
+
         <div class="w-full">
-            <!-- <img :src="'storage/tracks/images/test.svg'" alt=""> -->
             <img :src="`storage/${track.image}`" alt="">
         </div>
+
         <div class="px-6 py-4">
             <div class="font-bold text-xl mb-2">{{ track.title }}</div>
             <small class="font-gray-500 text-base">{{ track.artist }}</small>
         </div>
+
         <button @click="handleClick" class="bg-blue-300 hover:bg-blue-500 text-white font-bold py-2 px-6 rounded w-full m-1">Lire</button>
+        <Link :href="route('tracks.edit', { track: track })" class="bg-lime-300 hover:bg-lime-500 text-white font-bold py-2 px-6 rounded w-full m-1">Modify</Link>
+
     </div>
 </template>
 
 <script>
+import { Link } from '@inertiajs/vue3';
 
 export default {
     name: 'Track',
+    components: {
+        Link
+    },
     emits: ['played'],
     props: {
         track: Array,

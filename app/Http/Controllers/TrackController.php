@@ -33,12 +33,11 @@ class TrackController extends Controller
         ]);
 
         $uuid = 'trk-' . Str::uuid();
-        $imageEstension = $request->image->extension();
-        $request->image->storeAs('tracks/images', $uuid, '.' . $imageEstension);
+        $imageExtension = $request->image->extension();
+        $request->image->storeAs('tracks/images', $uuid, '.' . $imageExtension);
 
-        $musicEstension = $request->music->extension();
-        $request->music->storeAs('tracks/music', $uuid, '.' . $musicEstension);
-
+        $musicExtension = $request->music->extension();
+        $request->music->storeAs('tracks/music', $uuid, '.' . $musicExtension);
 
         Track::create([
             'artist' => $request->artist,
@@ -55,14 +54,35 @@ class TrackController extends Controller
         dd("get getPhotoPhoto");
     }
 
-    public function edit()
+    public function edit(Track $track)
     {
-        dd("get getPhotoPhotoEdit");
+        return Inertia::render('Track/Edit', [
+            'track' => $track
+        ]);
     }
 
-    public function update()
+    public function update(Request $request, Track $track)
     {
-        dd("get putPhotoPhoto");
+        $request->validate([
+            'title' => ['required', 'string', 'min:5', 'max:255'],
+            'artist' => ['required', 'string', 'min:3', 'max:255'],
+            'display' => ['required', 'boolean'],
+        ]);
+
+        // $track->update([
+        //     'title' => $request->title,
+        //     'artist' => $request->artist,
+        //     'display' => $request->display,
+        // ]);
+
+        // $track->update($request->all());
+
+        $track->title = $request->title;
+        $track->artist = $request->artist;
+        $track->display = $request->display;
+        $track->save();
+
+        return redirect()->route('tracks.index');
     }
 
     public function destroy()
