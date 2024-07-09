@@ -12,6 +12,7 @@
 
         <button @click="handleClick" class="bg-blue-300 hover:bg-blue-500 text-white font-bold py-2 px-6 rounded w-full m-1">Lire</button>
         <Link :href="route('tracks.edit', { track: track })" class="bg-lime-300 hover:bg-lime-500 text-white font-bold py-2 px-6 rounded w-full m-1">Modify</Link>
+        <Link as="button" method="delete" :href="route('tracks.destroy', { track: track })" class="bg-red-300 hover:bg-red-500 text-white font-bold py-2 px-6 rounded w-full m-1">Delete</Link>
 
     </div>
 </template>

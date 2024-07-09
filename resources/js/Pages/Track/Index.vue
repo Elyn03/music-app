@@ -15,7 +15,7 @@
         <template #content>
             <div>
                 <input v-model='filter' type="search" class="shadow border rounded py-2 px-3 text-gray-600">
-                
+
                 <div class="grid grid-cols-4 gap-4">
                     <Track v-for="track in filteredTracks" :key="track.id" :track="track" @played="play(track)"/>
                 </div>
@@ -23,7 +23,7 @@
         </template>
 
     </MusicLayout>
-    
+
 </template>
 
 <script>
@@ -51,8 +51,8 @@ export default {
     computed: {
         filteredTracks() {
             return this.tracks.filter(track =>
-            track.title.toLowerCase().includes(this.filter.toLowerCase())
-            || track.artist.toLowerCase().includes(this.filter.toLowerCase()))
+                track.title.toLowerCase().includes(this.filter.toLowerCase())
+                || track.artist.toLowerCase().includes(this.filter.toLowerCase()))
         }
     },
     methods: {

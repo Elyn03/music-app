@@ -51,7 +51,7 @@ class TrackController extends Controller
 
     public function show()
     {
-        dd("get getPhotoPhoto");
+        dd("show");
     }
 
     public function edit(Track $track)
@@ -85,9 +85,10 @@ class TrackController extends Controller
         return redirect()->route('tracks.index');
     }
 
-    public function destroy()
+    public function destroy(Track $track)
     {
-        dd("get pdeletePhotoPhotohoto");
+        $track->delete();
+        return redirect()->route('tracks.index');
     }
 
 }
