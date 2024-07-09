@@ -22,9 +22,32 @@ class TrackController extends Controller
         return Inertia::render('Track/Create');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        dd("get postPhoto");
+        $request->validate([
+            'title' => ['required', 'string', 'min:4', 'max:255'],
+            'artist' => ['required', 'string', 'min:3', 'max:255'],
+            'display' => ['required', 'boolean'],
+            'image' => ['required', 'image'],
+            'music' => ['required', 'file', 'mimes:mp3,mov,wav'],
+        ]);
+
+        $uuid = 'trk-' . Str::uuid();
+        $imageEstension = $request->image->extension();
+        $request->image->storeAs('tracks/images', $uuid, '.' . $imageEstension);
+
+        $musicEstension = $request->music->extension();
+        $request->music->storeAs('tracks/music', $uuid, '.' . $musicEstension);
+
+
+        Track::create([
+            'artist' => $request->artist,
+            'display' => $request->display,
+            'title' => $request->title,
+        ]);
+
+        dd($request->get('artist', 'machin'));
+        return redirect()->route('tracks.index');
     }
 
     public function show()
