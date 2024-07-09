@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TrackController;
+use GuzzleHttp\Promise\TaskQueueInterface;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -24,3 +27,15 @@ Route::middleware([
 });
 
 Route::get('test', [HomeController::class, 'test'])->name('test');
+
+Route::name('tracks.')->prefix('tracks')->controller(TrackController::class)->group(function() {
+    Route::get('/', 'index')->name('index');
+    Route::get('/create', 'create')->name('create');
+    Route::post('/', 'store')->name('store');
+    Route::get('/{track}', 'show')->name('show');
+    Route::get('/{track}/edit', 'edit')->name('edit');
+    Route::put('/{track}', 'update')->name('update');
+    Route::delete('/{track}', 'destroy')->name('destroy');
+});
+
+// Route::ressource('tracks', TrackController::class)->exept(['show']);
