@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TrackController;
+use App\Http\Controllers\PlaylistController;
 use GuzzleHttp\Promise\TaskQueueInterface;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -38,4 +39,4 @@ Route::name('tracks.')->prefix('tracks')->controller(TrackController::class)->gr
     Route::delete('/{track}', 'destroy')->name('destroy');
 });
 
-// Route::ressource('tracks', TrackController::class)->exept(['show']);
+Route::resource('playlists', PlaylistController::class)->except(['show']);
