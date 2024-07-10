@@ -53,7 +53,13 @@ class PlaylistController extends Controller
             return redirect()->route('playlists.index');
         }
 
-        public function show() {}
+        public function show(Playlist $playlist)
+        {
+            return Inertia::render('Playlist/Show', [
+                'playlist' => $playlist->playlist,
+                'tracks' => $playlist->tracks,
+            ]);
+        }
 
         public function edit(Playlist $playlist)
         {

@@ -3,7 +3,7 @@
     <MusicLayout>
 
         <template #title>
-            List of my music
+            Title Playlist
         </template>
 
         <template #action>
@@ -25,17 +25,18 @@
 
 <script>
 import MusicLayout from '@/Layouts/MusicLayout.vue';
+import TrackList from '@/Components/Track/TrackList.vue';
 import { Link } from '@inertiajs/vue3';
-import TrackList from "@/Components/Track/TrackList.vue";
 
 export default {
-    name: 'Index',
+    name: 'Show',
     components: {
-        TrackList,
         MusicLayout,
-        Link
+        Link,
+        TrackList
     },
     props: {
+        playlist: Object,
         tracks: Array,
     }
 }

@@ -26,7 +26,7 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 
-    Route::resource('playlists', PlaylistController::class)->except(['show']);
+    Route::resource('playlists', PlaylistController::class);
 });
 
 Route::get('test', [HomeController::class, 'test'])->name('test');

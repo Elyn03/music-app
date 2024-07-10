@@ -23,6 +23,7 @@
                         <td>Title</td>
                         <td>Musics number</td>
                         <td>Created at</td>
+                        <td>Actions</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,6 +32,11 @@
                         <td>{{ playlist.title }}</td>
                         <td>{{ playlist.tracks_count }} musics</td>
                         <td>{{ playlist.created_at }}</td>
+                        <td>
+                            <Link :href="route('playlists.show', { playlist: playlist })" class="bg-blue-300 hover:bg-blue-600 text-white font-bold rounded py-2 px-4">
+                                Voir
+                            </Link>
+                        </td>
                     </tr>
                 </tbody>
             </table>
