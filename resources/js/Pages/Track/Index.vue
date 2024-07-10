@@ -3,12 +3,12 @@
     <MusicLayout>
 
         <template #title>
-            Liste de mes tracks
+            List of my music
         </template>
 
         <template #action>
             <Link :href="route('tracks.create')" class="bg-blue-300 hover:bg-blue-600 text-white font-bold rounded py-2 px-4">
-                Ajouter une musique
+                Add a music
             </Link>
         </template>
 

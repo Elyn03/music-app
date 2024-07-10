@@ -2,7 +2,7 @@
 
     <MusicLayout>
         <template #title>
-            List of my music
+            Create my music
         </template>
 
         <template #action>
