@@ -10,12 +10,10 @@
             <Link :href="route('tracks.create')" class="bg-blue-300 hover:bg-blue-600 text-white font-bold rounded py-2 px-4">
                 Add a music
             </Link>
-            <Link :href="route('playlists.index')" class="bg-lime-300 hover:bg-lime-600 text-white font-bold rounded py-2 px-4">
-                Playlist
-            </Link>
         </template>
 
         <template #content>
+            {{ $page.props.auth }}
             <TrackList :tracks="tracks" />
         </template>
 
