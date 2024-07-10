@@ -1,5 +1,5 @@
 <template>
-    <div class="max-w-sm rounded overflow-hidden shadow-lg cursos-pointer">
+    <div class="max-w-sm rounded overflow-hidden shadow-lg cursos-pointer" :class="{ 'border border-blue-500': active }">
 
         <div class="w-full">
             <img :src="`storage/${track.image}`" alt="">
@@ -28,6 +28,9 @@ export default {
     emits: ['played'],
     props: {
         track: Array,
+        active: {
+            type: Boolean,
+        },
     },
     methods: {
         handleClick() {

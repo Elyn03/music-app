@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Track;
 use Inertia\Inertia;
+use Illuminate\Support\Str;
 
 class TrackController extends Controller
 {
@@ -28,24 +29,27 @@ class TrackController extends Controller
             'title' => ['required', 'string', 'min:4', 'max:255'],
             'artist' => ['required', 'string', 'min:3', 'max:255'],
             'display' => ['required', 'boolean'],
-            'image' => ['required', 'image'],
-            'music' => ['required', 'file', 'mimes:mp3,mov,wav'],
+            'image' => ['required', 'image', 'max:10000'],
+            'music' => ['required', 'file', 'mimes:mp3,wav,mov', 'max:10000'],
         ]);
 
         $uuid = 'trk-' . Str::uuid();
+
         $imageExtension = $request->image->extension();
-        $request->image->storeAs('tracks/images', $uuid, '.' . $imageExtension);
+        $imagePath = $request->image->storeAs('tracks/images', $uuid . '.' . $imageExtension);
 
         $musicExtension = $request->music->extension();
-        $request->music->storeAs('tracks/music', $uuid, '.' . $musicExtension);
+        $musicPath = $request->music->storeAs('tracks/musics', $uuid . '.' . $musicExtension);
 
         Track::create([
+            'uuid' => $uuid,
+            'title' => $request->title,
             'artist' => $request->artist,
             'display' => $request->display,
-            'title' => $request->title,
+            'image' => $imagePath,
+            'music' => $musicPath,
         ]);
 
-        dd($request->get('artist', 'machin'));
         return redirect()->route('tracks.index');
     }
 

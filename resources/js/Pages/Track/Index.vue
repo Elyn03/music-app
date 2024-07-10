@@ -17,7 +17,7 @@
                 <input v-model='filter' type="search" class="shadow border rounded py-2 px-3 text-gray-600">
 
                 <div class="grid grid-cols-4 gap-4">
-                    <Track v-for="track in filteredTracks" :key="track.id" :track="track" @played="play(track)"/>
+                    <Track v-for="track in filteredTracks" :key="track.id" :track="track" @played="play(track)" class=""/>
                 </div>
             </div>
         </template>
