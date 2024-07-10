@@ -7,13 +7,12 @@
         </template>
 
         <template #action>
-            <Link :href="route('tracks.create')" class="bg-blue-300 hover:bg-blue-600 text-white font-bold rounded py-2 px-4">
+            <Link v-if="$page.props.isAdmin" :href="route('tracks.create')" class="bg-blue-300 hover:bg-blue-600 text-white font-bold rounded py-2 px-4">
                 Add a music
             </Link>
         </template>
 
         <template #content>
-            {{ $page.props.auth }}
             <TrackList :tracks="tracks" />
         </template>
 
