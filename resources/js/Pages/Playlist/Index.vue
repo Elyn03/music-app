@@ -16,13 +16,24 @@
         </template>
 
         <template #content>
-            <div>
-                <input v-model='filter' type="search" class="shadow border rounded py-2 px-3 text-gray-600">
-
-                {{playlists}}
-                <div class="grid grid-cols-4 gap-4">
-                </div>
-            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <td>#</td>
+                        <td>Title</td>
+                        <td>Musics number</td>
+                        <td>Created at</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(playlist, i) in playlists" :key="playlist.uuid">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ playlist.title }}</td>
+                        <td>{{ playlist.tracks_count }} musics</td>
+                        <td>{{ playlist.created_at }}</td>
+                    </tr>
+                </tbody>
+            </table>
         </template>
 
     </MusicLayout>

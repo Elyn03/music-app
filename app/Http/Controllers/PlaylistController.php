@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Playlist;
+use App\Models\Track;
 use Inertia\Inertia;
 use Illuminate\Support\Str;
 
@@ -12,7 +13,9 @@ class PlaylistController extends Controller
 {
         public function index()
         {
-            $playlists = Playlist::all();
+            $user = auth()->user();
+            $playlists = $user->playlists()->withCount(['tracks'])->get();
+
             return Inertia::render('Playlist/Index', [
                 'playlists' => $playlists,
             ]);
@@ -20,21 +23,32 @@ class PlaylistController extends Controller
 
         public function create()
         {
-            return Inertia::render('Playlist/Create');
+            $tracks = Track::where('display', true)->get();
+            return Inertia::render('Playlist/Create', [
+                'tracks' => $tracks,
+            ]);
         }
 
         public function store(Request $request)
         {
             $request->validate([
-                'title' => ['required', 'string', 'min:4', 'max:255']
+                'title' => ['required', 'string', 'min:4', 'max:255'],
+                'tracks' => ['required', 'array'],
+                'track.*' => ['required', 'string']
             ]);
 
-            $uuid = 'trk-' . Str::uuid();
+            $tracks = Track::whereIn('uuid', $request->tracks)->where('display', true)->get();
+            if ($tracks->count() !== count($request->tracks)) {
+                throw ValidationException::withMessages(['tracks' => 'Une musique n\'existe pas']);
+            }
 
-            Playlist::create([
-                'uuid' => $uuid,
+            $playlist = Playlist::create([
+                'uuid' => 'ply-' . Str::uuid(),
+                'user_id' => $request->user()->id,
                 'title' => $request->title
             ]);
+
+            $playlist->tracks()->attach($tracks->pluck('id'));
 
             return redirect()->route('playlists.index');
         }
