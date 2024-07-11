@@ -1,11 +1,12 @@
 <template>
-    <div>
-        <input v-model='filter' type="search" class="shadow border rounded py-2 px-3 text-gray-600">
+    <div class="flex flex-col gap-5">
+        <input v-model='filter' placeholder="Search a music" type="search" class="shadow border rounded py-2 px-3 text-gray-600">
 
-        <div class="grid grid-cols-4 gap-4">
-            <Track v-for="track in filteredTracks" :key="track.id" :track="track" :active="currentTrack === track.uuid"
+        <div class="flex flex-col gap-5">
+            <Track v-for="track in filteredTracks" :type="type" :key="track.id" :track="track" :active="currentTrack === track.uuid"
                    @played="play(track)" class=""/>
         </div>
+
     </div>
 </template>
 
@@ -30,7 +31,8 @@ export default {
         return {
             audio: null,
             currentTrack: null,
-            filter: ''
+            filter: '',
+            type: 'notPlaying',
         }
     },
     computed: {
@@ -47,12 +49,15 @@ export default {
             if (!this.currentTrack) {
                 this.audio = new Audio(url)
                 this.audio.play()
+                this.type = "play"
             } else if (this.currentTrack !== track.uuid) {
                 this.audio.pause();
                 this.audio.src = url
                 this.audio.play()
+                this.type = "play"
             } else {
                 this.audio.paused ? this.audio.play() : this.audio.pause()
+                this.type = this.audio.paused ? "pause" : "play"
             }
 
             this.currentTrack = track.uuid;

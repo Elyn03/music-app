@@ -7,7 +7,7 @@
         </template>
 
         <template #action>
-            <Link v-if="$page.props.isAdmin" :href="route('tracks.create')" class="bg-blue-300 hover:bg-blue-600 text-white font-bold rounded py-2 px-4">
+            <Link v-if="$page.props.isAdmin" :href="route('tracks.create')" class="hover:bg-blue-300 bg-blue-600 text-white font-bold rounded py-2 px-4">
                 Add a music
             </Link>
         </template>

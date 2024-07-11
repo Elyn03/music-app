@@ -20,7 +20,7 @@ class TrackFactory extends Factory
         return [
             'uuid' => Str::uuid(),
             'title' => $this->faker->sentence(3),
-            'artist' => $this->faker->name(),
+            'artist' => 'Taylor Swift',
             'image' => 'tracks/images/test.svg',
             'music' => 'tracks/musics/TheBolter.mp3',
             'display' => $this->faker->boolean(90),

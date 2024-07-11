@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <nav class="bg-gray-800">
+  <div class="flex relative">
+    <nav class="bg-gray-800 fixed top-0 left-0 h-full w-[20%]">
       <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div class="relative flex h-16 items-center justify-between">
           <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -75,8 +75,9 @@
 
     </nav>
 
-    <div class="px-16">
-      <div class="flex justify-between items-center">
+    <div class="py-5 px-10 sm:mt-0 sm:ml-[20%] w-full sm:w-[80%]">
+
+      <div class="pb-5 flex justify-between items-center">
         <h4 class="text-3xl font-bold my-6">
           <slot name="title" />
         </h4>
@@ -88,6 +89,7 @@
       <div>
           <slot name="content" />
       </div>
+
     </div>
 
   </div>

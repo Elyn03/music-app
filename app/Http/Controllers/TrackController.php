@@ -12,7 +12,7 @@ class TrackController extends Controller
 {
     public function index()
     {
-        $tracks = Track::where('display', true)->orderBy('artist')->get();
+        $tracks = Track::where('display', true)->orderBy('title')->get();
 
         return Inertia::render('Track/Index', [
             'tracks' => $tracks,

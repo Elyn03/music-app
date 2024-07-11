@@ -7,33 +7,33 @@
         </template>
 
         <template #action>
-            <Link :href="route('playlists.create')" class="bg-blue-300 hover:bg-blue-600 text-white font-bold rounded py-2 px-4">
+            <Link :href="route('playlists.create')" class="hover:bg-blue-300 bg-blue-600 text-white font-bold rounded py-2 px-4">
                 Create a playlist
             </Link>
         </template>
 
         <template #content>
-            <table>
-                <thead>
+            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-700">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-                        <td>#</td>
-                        <td>Title</td>
-                        <td>Musics number</td>
-                        <td>Created at</td>
-                        <td>Actions</td>
+                        <th scope="col" class="px-6 py-3">#</th>
+                        <th scope="col" class="px-6 py-3">Title</th>
+                        <th scope="col" class="px-6 py-3">Musics number</th>
+                        <th scope="col" class="px-6 py-3">Created at</th>
+                        <th scope="col" class="px-6 py-3">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="(playlist, i) in playlists" :key="playlist.uuid">
-                        <td>{{ i + 1 }}</td>
-                        <td>{{ playlist.title }}</td>
-                        <td>{{ playlist.tracks_count }} musics</td>
-                        <td>{{ playlist.created_at }}</td>
-                        <td>
-                            <Link :href="route('playlists.show', { playlist: playlist })" class="bg-blue-300 hover:bg-blue-600 text-white font-bold rounded py-2 px-4">
-                                Voir
+                        <th class="px-6 py-4">{{ i + 1 }}</th>
+                        <th class="px-6 py-4">{{ playlist.title }}</th>
+                        <th class="px-6 py-4">{{ playlist.tracks_count }} musics</th>
+                        <th class="px-6 py-4">{{ playlist.created_at }}</th>
+                        <th class="px-6 py-4">
+                            <Link :href="route('playlists.show', { playlist: playlist })" class="hover:bg-blue-300 bg-blue-600 text-white font-bold rounded py-2 px-4">
+                                Details
                             </Link>
-                        </td>
+                        </th>
                     </tr>
                 </tbody>
             </table>
