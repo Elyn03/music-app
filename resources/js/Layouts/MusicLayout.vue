@@ -1,8 +1,8 @@
 <template>
   <div class="flex relative">
-    <nav class="bg-gray-800 fixed top-0 left-0 h-full w-[20%]">
-      <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-        <div class="relative flex h-16 items-center justify-between">
+    <nav class="bg-gray-800 fixed top-0 left-0 h-[100vh] w-[20%]">
+      <div class="h-[100vh] py-10 mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+        <div class="relative flex flex-col h-full items-center justify-between">
           <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
             <!-- Mobile menu button-->
             <button type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
@@ -26,46 +26,41 @@
               </svg>
             </button>
           </div>
-          <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-            <div class="flex flex-shrink-0 items-center">
-              <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
-            </div>
-            <div class="hidden sm:ml-6 sm:block">
-              <div class="flex space-x-4">
+          <div class="flex items-center justify-center sm:items-stretch sm:justify-start w-full">
+              <div class="flex flex-col gap-3 w-full">
                   <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
 
                   <Link :href="route('tracks.index')"
-                        class="rounded-md px-3 py-2 text-sm font-medium"
-                        :class="[route().current().includes('tracks') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white']">
+                        class="rounded-md px-3 py-2 text-lg font-medium flex justify-center items-center"
+                        :class="[route().current().includes('tracks') ?  'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white']">
                       Music
                   </Link>
 
                   <Link :href="route('playlists.index')"
                         v-if="$page.props.auth.user"
-                        class="rounded-md px-3 py-2 text-sm font-medium"
+                        class="rounded-md px-3 py-2 text-lg font-medium flex justify-center items-center"
                         :class="[route().current().includes('playlists') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white']">
                       Playlist
                   </Link>
               </div>
-            </div>
           </div>
-          <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-              <div class="relative ml-3">
+          <div class="absolute w-full inset-y-0 right-0 flex items-center sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              <div class="relative flex flex-col gap-3 w-full">
                   <Link :href="route('login')"
                         v-if="!$page.props.auth.user"
-                        class="bg-blue-700 rounded-md px-3 py-2 text-sm text-white font-medium">
+                        class="bg-blue-700 rounded-md px-3 py-2 text-lg text-white font-medium flex justify-center items-center">
                       Log in
                   </Link>
 
                   <Link :href="route('register')"
                         v-if="!$page.props.auth.user"
-                        class="bg-blue-700 rounded-md px-3 py-2 text-sm text-white font-medium">
+                        class="bg-blue-700 rounded-md px-3 py-2 text-lg text-white font-medium flex justify-center items-center">
                       Sign up
                   </Link>
 
                   <Link :href="route('logout')" as="button" method="POST"
                         v-if="$page.props.auth.user"
-                        class="bg-blue-700 rounded-md px-3 py-2 text-sm text-white font-medium">
+                        class="bg-blue-700 rounded-md px-3 py-2 text-lg text-white font-medium flex justify-center items-center">
                       Log out
                   </Link>
               </div>
