@@ -46,23 +46,25 @@ class ApiKeyController extends Controller
         return redirect()->route('apiKeys.index');
     }
 
-    public function show(Playlist $playlist)
+    public function show(Playlist $apiKeys)
     {
 
     }
 
-    public function edit(Playlist $playlist)
+    public function edit()
     {
 
     }
 
-    public function update(Request $request, Playlist $playlist)
+    public function update()
     {
 
     }
 
-    public function destroy(Playlist $playlist)
+    public function destroy(ApiKey $apiKey)
     {
+        $apiKey->delete();
 
+        return redirect()->route('apiKeys.index');
     }
 }

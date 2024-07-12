@@ -30,15 +30,11 @@
                         <th class="px-6 py-4">{{ key.user_id }}</th>
                         <th class="px-6 py-4">{{ key.created_at }}</th>
                         <th class="px-6 py-4 flex justify-start items-center gap-2">
-                            <Link :href="route('playlists.index')"
+                            <Link :href="route('apiKeys.index')"
                                   class="bg-sky-blue hover:bg-air-blue font-bold rounded py-2 px-4">
                                 Details
                             </Link>
-                            <Link :href="route('playlists.index')"
-                                  class="bg-ash-gray hover:bg-platinium font-bold rounded py-2 px-4">
-                                Edit
-                            </Link>
-                            <button :href="route('playlists.index')"
+                            <button @click="deleteApiKey(key)"
                                     class="bg-misty-rose hover:bg-tea-rose font-bold rounded py-2 px-4">
                                 Delete
                             </button>
@@ -65,5 +61,10 @@ export default {
     props: {
         api_keys: Array,
     },
+    methods: {
+        deleteApiKey(key) {
+            this.$inertia.delete(route('apiKeys.destroy', { apiKey: key}))
+        }
+    }
 }
 </script>

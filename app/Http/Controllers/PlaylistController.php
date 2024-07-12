@@ -63,7 +63,6 @@ class PlaylistController extends Controller
 
     public function edit(Playlist $playlist)
     {
-
         $tracks = Track::where('display', true)->orderBy('title')->get();
 
         return Inertia::render('Playlist/Edit', [
