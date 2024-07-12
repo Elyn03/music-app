@@ -21,8 +21,8 @@ class TrackFactory extends Factory
             'uuid' => Str::uuid(),
             'title' => $this->faker->sentence(3),
             'artist' => 'Taylor Swift',
-            'image' => 'tracks/images/test.svg',
-            'music' => 'tracks/musics/TheBolter.mp3',
+            'image' => 'tracks/images/reputation.svg',
+            'music' => 'tracks/musics/GetawayCar.mp3',
             'display' => $this->faker->boolean(90),
             'play_count' => $this->faker->numberBetween(0, 2000),
         ];
