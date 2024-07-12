@@ -31,9 +31,9 @@
                   <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
 
                   <div class="flex flex-col justify-center items-center min-w-0 gap-4">
-                      <img v-if="$page.props.auth.user" class="w-25 h-25 flex-none rounded-full bg-gray-50" :src="`/storage/tracks/images/loml.jpg`" alt="">
+                      <img v-if="$page.props.auth.user" class="w-20 h-20 flex-none rounded-full bg-gray-50" :src="`/storage/tracks/images/loml.jpg`" alt="">
                       <div class="min-w-0 flex-auto">
-                          <p class="font-bold text-white text-xl mb-2">Welcome {{ $page.props.auth.user?.name }}</p>
+                          <p class="font-bold text-white text-center text-xl mb-2">Welcome {{ $page.props.auth.user?.name }}</p>
                       </div>
                   </div>
 

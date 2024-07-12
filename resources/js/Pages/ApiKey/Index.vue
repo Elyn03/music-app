@@ -18,7 +18,7 @@
                     <tr>
                         <th scope="col" class="px-6 py-3">#</th>
                         <th scope="col" class="px-6 py-3">Name</th>
-                        <th scope="col" class="px-6 py-3">User id</th>
+                        <th v-if="$page.props.isAdmin" scope="col" class="px-6 py-3">User id</th>
                         <th scope="col" class="px-6 py-3">Key</th>
                         <th scope="col" class="px-6 py-3">Created at</th>
                         <th scope="col" class="px-6 py-3">Actions</th>
@@ -28,8 +28,8 @@
                     <tr v-for="(key, i) in api_keys" :key="key.uuid">
                         <th class="px-6 py-4">{{ i + 1 }}</th>
                         <th class="px-6 py-4">{{ key.name }}</th>
+                        <th v-if="$page.props.isAdmin" class="px-6 py-4">{{ key.user_id }}</th>
                         <th class="px-6 py-4">{{ key.key }}</th>
-                        <th class="px-6 py-4">{{ key.user_id }}</th>
                         <th class="px-6 py-4">{{ key.created_at }}</th>
                         <th class="px-6 py-4 flex justify-start items-center gap-2">
                             <button @click="copyToClipboard(key.key, key.uuid)"

@@ -43,10 +43,6 @@ export default {
         MusicLayout,
         Link
     },
-    props: {
-        playlists: Array,
-        tracks: Array,
-    },
     data() {
         return {
             form: this.$inertia.form({
