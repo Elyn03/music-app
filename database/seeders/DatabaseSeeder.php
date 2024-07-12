@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Test',
             'email' => 'test@example.com',
+            'admin' => 1,
         ]);
 
         Track::factory(50)->create();
