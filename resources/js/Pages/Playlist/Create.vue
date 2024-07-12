@@ -7,7 +7,7 @@
         </template>
 
         <template #action>
-            <Link :href="route('playlists.index')" class="bg-blue-300 hover:bg-blue-600 text-white font-bold rounded py-2 px-4">
+            <Link :href="route('playlists.index')" class="bg-air-blue hover:bg-sky-blue text-white font-bold rounded py-2 px-4">
                 Return
             </Link>
         </template>
@@ -28,7 +28,7 @@
                     <label :for="track.uuid">{{ track.title }}</label>
                 </div>
 
-                <input type="submit" value="Create playlist" class="bg-blue-700 hover:bg-blue-300 text-white rounded py-2 px-4"
+                <input type="submit" value="Create playlist" class="bg-air-blue hover:bg-sky-blue text-white rounded py-2 px-4"
                        :class="[form.processing ? 'bg-gray-500' : 'bg-blue-300 hover:bg-blue-600']" :disabled="form.processing">
             </form>
 

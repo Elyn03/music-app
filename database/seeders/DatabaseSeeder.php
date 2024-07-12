@@ -22,6 +22,6 @@ class DatabaseSeeder extends Seeder
             'admin' => 1,
         ]);
 
-        Track::factory(50)->create();
+        Track::factory(10)->create();
     }
 }

@@ -11,16 +11,16 @@
 
         <div class="flex justify-center items-center gap-3">
             <button @click="handleClick"
-                    class="bg-blue-300 hover:bg-blue-500 text-white font-bold p-1 rounded">
-                <img v-if="!active || type==='pause'" width="30" height="30" src="https://img.icons8.com/pulsar-line/48/play.png" alt="play"/>
-                <img v-if="type === 'play' && active" width="30" height="30" src="https://img.icons8.com/pulsar-line/48/pause.png" alt="pause"/>
+                    class="bg-sky-blue hover:bg-air-blue text-white font-bold p-1 rounded">
+                <img v-if="!active || isPlaying" width="30" height="30" src="https://img.icons8.com/pulsar-line/48/play.png" alt="play"/>
+                <img v-if="!isPlaying && active" width="30" height="30" src="https://img.icons8.com/pulsar-line/48/pause.png" alt="pause"/>
             </button>
             <Link v-if="$page.props.isAdmin" :href="route('tracks.edit', { track: track })"
-                  class="bg-lime-300 hover:bg-lime-500 text-white font-bold p-1 rounded">
+                  class="bg-ash-gray hover:bg-platinium text-white font-bold p-1 rounded">
                 <img width="30" height="30" src="https://img.icons8.com/pulsar-line/48/edit.png" alt="edit"/>
             </Link>
             <Link v-if="$page.props.isAdmin" as="button" method="delete" :href="route('tracks.destroy', { track: track })"
-                  class="bg-red-300 hover:bg-red-500 text-white font-bold p-1 rounded">
+                  class="bg-misty-rose hover:bg-tea-rose text-white font-bold p-1 rounded">
                 <img width="30" height="30" src="https://img.icons8.com/pulsar-line/48/filled-trash.png" alt="filled-trash"/>
             </Link>
         </div>
@@ -42,7 +42,7 @@ export default {
         active: {
             type: Boolean,
         },
-        type: String
+        isPlaying: Boolean
     },
     methods: {
         handleClick() {

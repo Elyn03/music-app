@@ -1,12 +1,12 @@
 <?php
 
-use App\Http\Controllers\TrackController;
-use App\Http\Controllers\PlaylistController;
 use GuzzleHttp\Promise\TaskQueueInterface;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Middleware\IsAdmin;
+use App\Http\Controllers\TrackController;
+use App\Http\Controllers\PlaylistController;
 
 Route::get('/', [TrackController::class, 'index'])->name('tracks.index');
 

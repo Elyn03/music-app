@@ -7,7 +7,7 @@
         </template>
 
         <template #action>
-            <Link :href="route('playlists.create')" class="hover:bg-blue-300 bg-blue-600 text-white font-bold rounded py-2 px-4">
+            <Link :href="route('playlists.create')" class="bg-air-blue hover:bg-sky-blue text-white font-bold rounded py-2 px-4">
                 Create a playlist
             </Link>
         </template>
@@ -30,7 +30,7 @@
                         <th class="px-6 py-4">{{ playlist.tracks_count }} musics</th>
                         <th class="px-6 py-4">{{ playlist.created_at }}</th>
                         <th class="px-6 py-4">
-                            <Link :href="route('playlists.show', { playlist: playlist })" class="hover:bg-blue-300 bg-blue-600 text-white font-bold rounded py-2 px-4">
+                            <Link :href="route('playlists.show', { playlist: playlist })" class="bg-air-blue hover:bg-sky-blue text-white font-bold rounded py-2 px-4">
                                 Details
                             </Link>
                         </th>
@@ -46,12 +46,14 @@
 <script>
 import MusicLayout from '@/Layouts/MusicLayout.vue';
 import { Link } from '@inertiajs/vue3';
+import moment from 'moment';
 
 export default {
     name: 'Index',
     components: {
         MusicLayout,
-        Link
+        Link,
+        moment
     },
     props: {
         playlists: Array,

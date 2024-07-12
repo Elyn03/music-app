@@ -6,7 +6,7 @@
         </template>
 
         <template #action>
-            <Link :href="route('tracks.index')" class="hover:bg-blue-300 bg-blue-600 text-white font-bold rounded py-2 px-4">
+            <Link :href="route('tracks.index')" class="bg-air-blue hover:bg-sky-blue text-white font-bold rounded py-2 px-4">
                 Return
             </Link>
         </template>
@@ -61,7 +61,7 @@
                     <p class="text-red-400 text-xs italic">{{ form.errors.music }}</p>
                 </div>
 
-                <input type="submit" value="Create music" class="bg-blue-700 hover:bg-blue-300 text-white rounded py-2 px-4"
+                <input type="submit" value="Create music" class="bg-air-blue hover:bg-sky-blue text-white rounded py-2 px-4"
                        :class="[form.processing ? 'bg-gray-500' : 'bg-blue-300 hover:bg-blue-600']" :disabled="form.processing">
 
             </form>

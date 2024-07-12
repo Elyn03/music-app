@@ -7,7 +7,7 @@
         </template>
 
         <template #action>
-            <Link :href="route('playlists.index')" class="bg-lime-300 hover:bg-lime-600 text-white font-bold rounded py-2 px-4">
+            <Link :href="route('playlists.index')" class="bg-air-blue hover:bg-sky-blue text-white font-bold rounded py-2 px-4">
                 Return
             </Link>
         </template>

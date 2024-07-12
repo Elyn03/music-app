@@ -1,6 +1,6 @@
 <template>
   <div class="flex relative">
-    <nav class="bg-gray-800 fixed top-0 left-0 h-[100vh] w-[20%]">
+    <nav class="bg-gray-700 fixed top-0 left-0 h-[100vh] w-[20%]">
       <div class="h-[100vh] py-10 mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div class="relative flex flex-col h-full items-center justify-between">
           <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -30,6 +30,13 @@
               <div class="flex flex-col gap-3 w-full">
                   <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
 
+                  <div class="flex flex-col justify-center items-center min-w-0 gap-4">
+                      <img class="w-25 h-25 flex-none rounded-full bg-gray-50" :src="`/storage/tracks/images/loml.jpg`" alt="">
+                      <div class="min-w-0 flex-auto">
+                          <p class="font-bold text-white text-xl mb-2">Welcome {{ $page.props.auth.user.name }}</p>
+                      </div>
+                  </div>
+
                   <Link :href="route('tracks.index')"
                         class="rounded-md px-3 py-2 text-lg font-medium flex justify-center items-center"
                         :class="[route().current().includes('tracks') ?  'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white']">
@@ -48,19 +55,19 @@
               <div class="relative flex flex-col gap-3 w-full">
                   <Link :href="route('login')"
                         v-if="!$page.props.auth.user"
-                        class="bg-blue-700 rounded-md px-3 py-2 text-lg text-white font-medium flex justify-center items-center">
+                        class="bg-air-blue hover:bg-sky-blue rounded-md px-3 py-2 text-lg text-white font-medium flex justify-center items-center">
                       Log in
                   </Link>
 
                   <Link :href="route('register')"
                         v-if="!$page.props.auth.user"
-                        class="bg-blue-700 rounded-md px-3 py-2 text-lg text-white font-medium flex justify-center items-center">
+                        class="bg-air-blue hover:bg-sky-blue rounded-md px-3 py-2 text-lg text-white font-medium flex justify-center items-center">
                       Sign up
                   </Link>
 
                   <Link :href="route('logout')" as="button" method="POST"
                         v-if="$page.props.auth.user"
-                        class="bg-blue-700 rounded-md px-3 py-2 text-lg text-white font-medium flex justify-center items-center">
+                        class="bg-air-blue hover:bg-sky-blue rounded-md px-3 py-2 text-lg text-white font-medium flex justify-center items-center">
                       Log out
                   </Link>
               </div>
