@@ -15,11 +15,11 @@
                 <img v-if="!active || isPlaying" width="30" height="30" src="https://img.icons8.com/pulsar-line/48/play.png" alt="play"/>
                 <img v-if="!isPlaying && active" width="30" height="30" src="https://img.icons8.com/pulsar-line/48/pause.png" alt="pause"/>
             </button>
-            <Link v-if="$page.props.isAdmin" :href="route('tracks.edit', { track: track })"
+            <Link v-if="$page.props.isAdmin && !$page.url.includes('playlists')" :href="route('tracks.edit', { track: track })"
                   class="bg-ash-gray hover:bg-platinium text-white font-bold p-1 rounded">
                 <img width="30" height="30" src="https://img.icons8.com/pulsar-line/48/edit.png" alt="edit"/>
             </Link>
-            <Link v-if="$page.props.isAdmin" as="button" method="delete" :href="route('tracks.destroy', { track: track })"
+            <Link v-if="$page.props.isAdmin && !$page.url.includes('playlists')" as="button" method="delete" :href="route('tracks.destroy', { track: track })"
                   class="bg-misty-rose hover:bg-tea-rose text-white font-bold p-1 rounded">
                 <img width="30" height="30" src="https://img.icons8.com/pulsar-line/48/filled-trash.png" alt="filled-trash"/>
             </Link>

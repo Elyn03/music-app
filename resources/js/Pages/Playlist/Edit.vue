@@ -3,7 +3,7 @@
     <MusicLayout>
 
         <template #title>
-            Create a playlist
+            Update playlist : {{ playlist.title}}
         </template>
 
         <template #action>
@@ -28,7 +28,7 @@
                     <label :for="track.uuid">{{ track.title }}</label>
                 </div>
 
-                <input type="submit" value="Create playlist" class="bg-air-blue hover:bg-sky-blue text-white rounded py-2 px-4"
+                <input type="submit" value="Modify playlist" class="bg-air-blue hover:bg-sky-blue text-white rounded py-2 px-4"
                        :class="[form.processing ? 'bg-gray-500' : 'bg-blue-300 hover:bg-blue-600']" :disabled="form.processing">
             </form>
 
@@ -49,19 +49,20 @@ export default {
         Link
     },
     props: {
+        playlist: Object,
         tracks: Array,
     },
     data() {
         return {
             form: this.$inertia.form({
-                title: '',
-                tracks: [],
+                title: this.playlist.title,
+                tracks: this.playlist.tracks.map(track => track.uuid),
             })
         }
     },
     methods: {
         submit() {
-            this.form.post(route('playlists.store'))
+            this.form.put(route('playlists.update', { playlist: this.playlist }))
         }
     }
 }

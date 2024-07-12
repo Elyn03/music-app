@@ -29,10 +29,19 @@
                         <th class="px-6 py-4">{{ playlist.title }}</th>
                         <th class="px-6 py-4">{{ playlist.tracks_count }} musics</th>
                         <th class="px-6 py-4">{{ playlist.created_at }}</th>
-                        <th class="px-6 py-4">
-                            <Link :href="route('playlists.show', { playlist: playlist })" class="bg-air-blue hover:bg-sky-blue text-white font-bold rounded py-2 px-4">
+                        <th class="px-6 py-4 flex justify-start items-center gap-2">
+                            <Link :href="route('playlists.show', { playlist: playlist })"
+                                  class="bg-sky-blue hover:bg-air-blue font-bold rounded py-2 px-4">
                                 Details
                             </Link>
+                            <Link :href="route('playlists.edit', { playlist: playlist })"
+                                  class="bg-ash-gray hover:bg-platinium font-bold rounded py-2 px-4">
+                                Edit
+                            </Link>
+                            <button @click="deletePlaylist(playlist)"
+                                    class="bg-misty-rose hover:bg-tea-rose font-bold rounded py-2 px-4">
+                                Delete
+                            </button>
                         </th>
                     </tr>
                 </tbody>
@@ -46,17 +55,20 @@
 <script>
 import MusicLayout from '@/Layouts/MusicLayout.vue';
 import { Link } from '@inertiajs/vue3';
-import moment from 'moment';
 
 export default {
     name: 'Index',
     components: {
         MusicLayout,
         Link,
-        moment
     },
     props: {
         playlists: Array,
     },
+    methods: {
+        deletePlaylist(playlist) {
+            this.$inertia.delete(route('playlists.destroy', { playlist: playlist}))
+        }
+    }
 }
 </script>
