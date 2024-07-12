@@ -7,11 +7,13 @@ use Inertia\Inertia;
 use App\Http\Middleware\IsAdmin;
 use App\Http\Controllers\TrackController;
 use App\Http\Controllers\PlaylistController;
+use App\Http\Controllers\ApiKeyController;
 
 Route::get('/', [TrackController::class, 'index'])->name('tracks.index');
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
     Route::resource('playlists', PlaylistController::class);
+    Route::resource('apiKeys', ApiKeyController::class);
 
     Route::name('tracks.')->prefix('tracks')->controller(TrackController::class)->middleware([IsAdmin::class])->group(function() {
         Route::get('/create', 'create')->name('create');
