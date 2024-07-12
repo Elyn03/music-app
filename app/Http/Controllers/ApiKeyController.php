@@ -46,7 +46,7 @@ class ApiKeyController extends Controller
         return redirect()->route('apiKeys.index');
     }
 
-    public function show(Playlist $apiKeys)
+    public function show()
     {
 
     }

@@ -1,5 +1,6 @@
 <template>
     <div class="flex flex-col gap-5">
+
         <input v-model='filter' placeholder="Search a music" type="search" class="shadow border rounded py-2 px-3 text-gray-600">
 
         <div class="flex flex-col gap-5">
