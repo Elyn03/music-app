@@ -47,7 +47,7 @@
                     <p class="text-red-400 text-xs italic">{{ form.errors.display }}</p>
                 </div>
 
-                <input type="submit" value="Modify a music" class="bg-air-blue hover:bg-sky-blue rounded py-2 px-4" :disabled="form.processing">
+                <input type="submit" value="Modify a music" class="bg-air-blue hover:bg-sky-blue text-blue rounded py-2 px-4" :disabled="form.processing">
 
             </form>
         </template>

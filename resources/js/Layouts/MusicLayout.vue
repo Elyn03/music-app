@@ -40,21 +40,21 @@
                   <Link :href="route('tracks.index')"
                         class="rounded-md px-3 py-2 text-lg font-medium flex justify-center items-center"
                         :class="[route().current().includes('tracks') ?  'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white']">
-                      Music
+                      Musics
                   </Link>
 
                   <Link :href="route('playlists.index')"
                         v-if="$page.props.auth.user"
                         class="rounded-md px-3 py-2 text-lg font-medium flex justify-center items-center"
                         :class="[route().current().includes('playlists') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white']">
-                      Playlist
+                      Playlists
                   </Link>
 
                   <Link :href="route('apiKeys.index')"
                         v-if="$page.props.auth.user"
                         class="rounded-md px-3 py-2 text-lg font-medium flex justify-center items-center"
                         :class="[route().current().includes('apiKeys') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white']">
-                      Api Key
+                      Api Keys
                   </Link>
               </div>
           </div>
