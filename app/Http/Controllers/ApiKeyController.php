@@ -42,7 +42,7 @@ class ApiKeyController extends Controller
             'uuid' => 'ak-' . Str::uuid(),
             'user_id' => $request->user()->id,
             'name' => $request->name,
-            'key' => Str::uuid()
+            'key' => Str::random(40)
         ]);
 
         return redirect()->route('apiKeys.index');

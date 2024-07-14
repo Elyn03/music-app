@@ -3,7 +3,7 @@
     <MusicLayout>
 
         <template #title>
-            Title Playlist
+            Playlist
         </template>
 
         <template #action>
