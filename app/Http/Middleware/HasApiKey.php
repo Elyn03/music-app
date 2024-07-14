@@ -5,6 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Auth;
+use App\Models\ApiKey;
 
 class hasApiKey
 {
@@ -15,24 +17,23 @@ class hasApiKey
      */
     public function handle(Request $request, Closure $next): Response
     {
-        //  vérifie qu’un champ “x-api-key” est passé en header, qu’elle correspond à une clé API existante et qui récupère le user en fonction
-// Check if the x-api-key header is present
         $apiKey = $request->header('x-api-key');
 
+        // apikey in header ?
         if (!$apiKey) {
-            return response()->json(['error' => 'API key is missing'], 401);
+            return response()->json(['error' => 'API key missing'], 401);
         }
 
-        // Find the API key in the database
         $apiKeyRecord = ApiKey::where('key', $apiKey)->first();
 
+        // apikey in database ?
         if (!$apiKeyRecord) {
-            return response()->json(['error' => 'Invalid API key'], 401);
+            return response()->json(['error' => 'API key invalid'], 401);
         }
 
-        // Retrieve the user associated with the API key
         $user = $apiKeyRecord->user;
 
+        // user's apikey ?
         if (!$user) {
             return response()->json(['error' => 'User not found'], 401);
         }

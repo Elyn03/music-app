@@ -39,7 +39,7 @@ class ApiKeyController extends Controller
         ]);
 
         $apiKey = ApiKey::create([
-            'uuid' => 'apiKey-' . Str::uuid(),
+            'uuid' => 'ak-' . Str::uuid(),
             'user_id' => $request->user()->id,
             'name' => $request->name,
             'key' => Str::uuid()
@@ -48,20 +48,11 @@ class ApiKeyController extends Controller
         return redirect()->route('apiKeys.index');
     }
 
-    public function show()
-    {
+    public function show() {}
 
-    }
+    public function edit() {}
 
-    public function edit()
-    {
-
-    }
-
-    public function update()
-    {
-
-    }
+    public function update() {}
 
     public function destroy(ApiKey $apiKey)
     {
